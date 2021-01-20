@@ -11,17 +11,23 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
+import android.view.LayoutInflater
+import android.view.View
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var notificationId = 1
+    val adapter by lazy { ViewAdapter(mutableListOf("10","20","sdl")) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn.setOnClickListener { sendNotifiCation("这是一条通知栏消息") }
+        var footer = LayoutInflater.from(this).inflate(R.layout.item, null)
+        lv.addFooterView(footer)
+        lv.footerViewsCount
+        lv.adapter=adapter
     }
 
     /**
